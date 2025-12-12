@@ -1,0 +1,19 @@
+version: '3.9'
+
+services:
+  purchaseorder-app:
+    build: .
+    container_name: purchaseorder-app
+    restart: always
+    ports:
+      - "8088:8088"
+    environment:
+      DB_URL: jdbc:mysql://host.docker.internal:3307/sisdb2025?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
+      DB_USERNAME: AppRoot
+      DB_PASSWORD: abcd
+      JPA_DDL: update
+      JPA_SHOW_SQL: "true"
+      HIB_FORMAT_SQL: "true"
+      LOG_SQL_LEVEL: DEBUG
+      LOG_BINDER_LEVEL: TRACE
+      LOG_JDBC_LEVEL: DEBUG
